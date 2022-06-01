@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Agenda - Modifier contact{% endblock %}
+
+{% block content %}
+    <h1 class="text-center my-3 display-5">Modifier contact</h1>
+
+    <div class="container">
+        {{ form_start(contact_edit_form) }} 
+
+            <div class="mb-3">
+                <label for="contact_fullName">Nom complet</label>
+                {{ form_widget(contact_edit_form.fullName, {'attr': {'class': 'form-control'} } ) }}
+            </div>
+
+            <div class="mb-3">
+                <label for="contact_email">Email</label>
+                {{ form_widget(contact_edit_form.email, {'attr': {'class': 'form-control'} } ) }}
+            </div>
+
+            <div class="mb-3">
+                <label for="contact_age">Age</label>
+                {{ form_widget(contact_edit_form.age, {'attr': {'class': 'form-control'} } ) }}
+            </div>
+
+            <input type="submit" class="btn btn-success" value="Modifier" formnovalidate />
+        {{ form_end(contact_edit_form) }}
+    </div>
+    
+{% endblock %}
