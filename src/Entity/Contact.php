@@ -4,8 +4,15 @@ namespace App\Entity;
 
 use App\Repository\ContactRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
+#[UniqueEntity(
+    fields: ['email'],
+    errorPath: 'email',
+    message: 'Impossible d\'utiliser cet email.',
+)]
 class Contact
 {
     #[ORM\Id]
@@ -13,12 +20,24 @@ class Contact
     #[ORM\Column(type: 'integer')]
     private $id;
 
+    #[Assert\NotBlank(
+        message: "Le nom est obligatoire."
+    )]
     #[ORM\Column(type: 'string', length: 255)]
     private $fullName;
 
+    #[Assert\NotBlank(
+        message: "L'email est obligatoire."
+    )]
     #[ORM\Column(type: 'string', length: 255, unique: true)]
     private $email;
 
+
+    #[Assert\Range(
+        min: 6,
+        max: 120,
+        notInRangeMessage: 'L\'age doit être compris entre {{ min }} et {{ max }} ans.',
+    )]
     #[ORM\Column(type: 'integer', nullable: true)]
     private $age;
 

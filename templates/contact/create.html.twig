@@ -10,16 +10,19 @@
 
             <div class="mb-3">
                 <label for="contact_fullName">Nom complet</label>
+                <div class="text-danger">{{ form_errors(contact_create_form.fullName) }}</div>
                 {{ form_widget(contact_create_form.fullName, {'attr': {'class': 'form-control'} } ) }}
             </div>
 
             <div class="mb-3">
                 <label for="contact_email">Email</label>
+                <div class="text-danger">{{ form_errors(contact_create_form.email) }}</div>
                 {{ form_widget(contact_create_form.email, {'attr': {'class': 'form-control'} } ) }}
             </div>
 
             <div class="mb-3">
                 <label for="contact_age">Age</label>
+                <div class="text-danger">{{ form_errors(contact_create_form.age) }}</div>
                 {{ form_widget(contact_create_form.age, {'attr': {'class': 'form-control'} } ) }}
             </div>
 
